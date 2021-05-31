@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+    front_end:
+        container_name: project_front_end
+        image: davidpapworth2/project_front_end
+        build: ./front-end
+        ports:
+        - published: 5000
+          target: 5000
+        environment:
+          DATABASE_URI: ${DATABASE_URI}
+    random_operator:
+        container_name: project_random_operator
+        image: davidpapworth2/project_random_operator
+        build: ./operator_random
+    random_operator:
+        container_name: project_random_strat
+        image: davidpapworth2/project_random_strat
+        build: ./strat_random
+    points:
+        container_name: project_points
+        image: davidpapworth2/project_points
+        build: ./points
+        
