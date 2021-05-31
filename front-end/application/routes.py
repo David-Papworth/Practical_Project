@@ -14,31 +14,31 @@ def home():
 def operator():
     operator_list = ['Sledge', 'Thatcher', 'Ash', 'Thermite', 'Montagne', 'Twitch', 'Blitz', 'Fuze', 'Glaz']
     op = random.choice(operator_list)
-    if op in []:
+    if op in ['Ash', 'Sledge']:
         dif = 0
-    elif op in []:
+    elif op in ['Thatcher', 'Thermite', 'Twitch', 'Blitz']:
         dif = 10 
-    elif op in []:
+    elif op in ['Montagne', 'Fuze', 'Glaz']:
         dif = 20 
     new_pick = Pick(operator=op, diffulity=dif)
     db.session.add(new_pick)
     db.session.commit()
-    return redirect(url_for('home'))
+    return redirect(url_for('strat'))
 
 @app.route('/strat')
 def strat():
-    strat_list = ['Primary Only', 'Secondary Only', 'Snail Mode', 'Train', 'Rush', 'Shotguns']
+    strat_list = ['Primary Only', 'Secondary Only', 'Snail Mode', 'Train', 'Rush']
     strat_pick = random.choice(strat_list)
     pick = Pick.query.filter_by(id=id).first()
-    if strat_pick in []:
+    if strat_pick in ['Primary Only', 'Rush']:
         dif = 0
-    elif strat_pick in []:
+    elif strat_pick in ['Secondary Only', 'Train']:
         dif = 20 
-    elif strat_pick in []:
+    elif strat_pick in ['Snail Mode']:
         dif = 40
     pick.strat = strat_pick
     pick.diffulity_strat = dif
-    return redirect(url_for('home'))
+    return redirect(url_for('points'))
 
 @app.route('/points')
 def points():
