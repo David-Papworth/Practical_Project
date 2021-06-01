@@ -4,6 +4,7 @@ sudo apt update
 sudo apt install python3 python3-pip
 
 pip3 install -r requirements.txt
+pip3 install requests-mock
 export DATABASE_URI
 export SECRET_KEY
 
