@@ -11,10 +11,5 @@ pipeline {
                 sh "bash test.sh"
             }
         }
-        #stage('Deploy') {
-            #steps {
-            #    //
-            #}
-        #}
     }
 }
