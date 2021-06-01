@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 @app.route('/points')
 def points():
+    difficulty = request.data[]
     lower_points = 0
     higher_points = 50
     lower_points += pick.difficulty

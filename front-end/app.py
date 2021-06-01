@@ -22,8 +22,8 @@ class Pick(db.Model):
 def home():
     operator = requests.get('http://operator_random_api:5000/get_operator')
     strat = requests.get('http://strat_random_api:5000/get_strat')
-    points_per_kill = requests.post('http://points_api:5000/get_noise', difficulty=opdif.text, difficulty_strat=stdif.text)
-    last_picks = Pick.query.order_by(desc(Pick.id)).limit(5).all()
+    points_per_kill = requests.post('http://points_api:5000/get_noise', difficulty=opdif.text, difficulty_strat=stdif.text, data={})
+    last_picks = Pick.query.order_by(desc("id")).limit(5).all()
     db.session.add(
         Animals(
             operator = 
