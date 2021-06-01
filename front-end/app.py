@@ -20,21 +20,23 @@ class Pick(db.Model):
 @app.route('/')
 @app.route('/home')
 def home():
-    op = requests.get('http://operator_random_api:5000/get_operator')
-    st = requests.get('http://strat_random_api:5000/get_strat')
-    points = requests.post('http://points_api:5000/get_noise', data={difficulty:op.json.get["difficulty"], difficulty_strat:st.json.get["difficulty"]})
+    op = requests.get('http://project_random_operator:5000/operator')
+    st = requests.get('http://project_random_strat:5000/strat')
+    ops = op.json()["difficulty"]
+    stra = st.json()["difficulty"]
+    points = requests.post('http://project_points:5000/points', json={"difficulty":ops, "difficulty_strat":stra})
     last_picks = Pick.query.order_by(desc("id")).limit(5).all()
     db.session.add(
-        Animals(
-            operator = op.json.get["operator"],
-            difficulty = op.json.get["difficulty"],
-            strat = st.json.get["strat"],
-            difficulty_strat = st.json.get["difficulty"],
-            points_per_kill = points.text
+        Pick(
+            operator = op.json()["operator"],
+            difficulty = op.json()["difficulty"],
+            strat = st.json()["strat"],
+            difficulty_strat = st.json()["difficulty"],
+            points_per_kill = int(points.text)
         )
     )
     db.session.commit()
-    return render_template("index.html", title="Home", last_five_animals=last_five_animals)
+    return render_template("index.html", title="Home", last_picks=last_picks, op=op, st=st, points=points)
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')

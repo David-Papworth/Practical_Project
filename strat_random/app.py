@@ -13,7 +13,7 @@ def strat():
         dif = 20 
     elif strat_pick in ['Snail Mode']:
         dif = 40
-    return jsonify("strat":strat_pick, "difficulty":dif)
+    return jsonify({"strat":strat_pick, "difficulty":dif})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)

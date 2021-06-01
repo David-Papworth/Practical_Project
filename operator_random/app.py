@@ -13,7 +13,7 @@ def operator():
         dif = 10 
     elif op in ['Montagne', 'Fuze', 'Glaz']:
         dif = 20 
-    return jsonify{"operator": op, "difficulty":dif}
+    return jsonify({"operator":op, "difficulty":dif})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)

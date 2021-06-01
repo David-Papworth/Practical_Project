@@ -13,7 +13,7 @@ services:
         container_name: project_random_operator
         image: davidpapworth2/project_random_operator
         build: ./operator_random
-    random_operator:
+    random_strat:
         container_name: project_random_strat
         image: davidpapworth2/project_random_strat
         build: ./strat_random
