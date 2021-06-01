@@ -38,5 +38,4 @@ def home():
     db.session.commit()
     return render_template("index.html", title="Home", last_picks=last_picks, op=op, st=st, points=points)
 
-if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0')
+if __name__ == "__main__": app.run(debug=True, host='0.0.0.0')

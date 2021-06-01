@@ -15,5 +15,4 @@ def points():
     higher_points += difficulty_strat
     return str(random.randrange(lower_points, higher_points))
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+if __name__ == "__main__": app.run(host="0.0.0.0", port=5000)
