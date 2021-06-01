@@ -8,7 +8,7 @@ class TestBase(TestCase):
     def create_app(self):
         return app
 
-class TestHome(TestBase):
+class TestOpp(TestBase):
     def test_operator(self):
         for _ in range(20):
             response = self.client.get(url_for('operator'))
