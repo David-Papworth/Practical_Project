@@ -20,17 +20,17 @@ class Pick(db.Model):
 @app.route('/')
 @app.route('/home')
 def home():
-    operator = requests.get('http://operator_random_api:5000/get_operator')
-    strat = requests.get('http://strat_random_api:5000/get_strat')
-    points_per_kill = requests.post('http://points_api:5000/get_noise', difficulty=opdif.text, difficulty_strat=stdif.text, data={})
+    op = requests.get('http://operator_random_api:5000/get_operator')
+    st = requests.get('http://strat_random_api:5000/get_strat')
+    points = requests.post('http://points_api:5000/get_noise', data={difficulty:op.json.get["difficulty"], difficulty_strat:st.json.get["difficulty"]})
     last_picks = Pick.query.order_by(desc("id")).limit(5).all()
     db.session.add(
         Animals(
-            operator = 
-            difficulty = 
-            strat =
-            difficulty_strat =
-            points_per_kill =
+            operator = op.json.get["operator"],
+            difficulty = op.json.get["difficulty"],
+            strat = st.json.get["strat"],
+            difficulty_strat = st.json.get["difficulty"],
+            points_per_kill = points.text
         )
     )
     db.session.commit()
