@@ -1,0 +1,9 @@
+all:
+  children:
+    managers:
+      hosts:
+        project-swarm-manager
+    workers:
+      hosts:
+        project-swarm-worker
+        project-swarm-worker2
