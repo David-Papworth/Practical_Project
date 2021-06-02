@@ -22,12 +22,12 @@ pipeline {
         }
         stage('configuration'){
             steps{
-                sh "ansible playbook ./ansible/playbook.yaml"
+                sh "ansible-playbook ./ansible/playbook.yaml"
             }
         }
         stage('deploy'){
             steps{
-                sh "ansible playbook ./ansible/playbook.yaml"
+                sh "deploy.sh"
             }
         }
     }

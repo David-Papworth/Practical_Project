@@ -7,3 +7,6 @@ all:
       hosts:
         project-swarm-worker
         project-swarm-worker2
+    load_balance:
+      hosts:
+        load-balance
