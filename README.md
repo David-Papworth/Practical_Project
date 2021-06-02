@@ -47,7 +47,13 @@ The first step was to create user stories to plan what was required, as well as 
 * Create ansible files to install docker on managers and workers as well as set them up 
 * Deploy the site on the managers using xginx and a load balancer.
 
+Database:
 
+Nginx:
+
+Ansible:
+
+Docker:
 ### CI Pipeline 
 
 ### Project Tracking 
