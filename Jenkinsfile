@@ -22,6 +22,7 @@ pipeline {
         }
         stage('configuration'){
             steps{
+                sh "sudo apt install ansible"
                 sh "ansible-playbook ./ansible/playbook.yaml"
             }
         }
