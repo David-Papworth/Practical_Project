@@ -1,0 +1,7 @@
+---
+- name: Add worker
+  docker_swarm:
+    state: join
+    advertise_addr: ansiblev2
+    join_token: "{{ hostvars['ansiblev1']['swarm_info']['swarm_facts']['JoinTokens']['Worker'] }}"
+    remote_addrs: [ 'ansiblev1:2377' ]
