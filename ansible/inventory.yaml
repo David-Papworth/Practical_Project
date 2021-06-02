@@ -2,11 +2,11 @@ all:
   children:
     managers:
       hosts:
-        project-swarm-manager
+        project-swarm-manager:
     workers:
       hosts:
-        project-swarm-worker
-        project-swarm-worker2
+        project-swarm-worker:
+        project-swarm-worker2:
     load_balance:
       hosts:
-        load-balance
+        load-balance:
