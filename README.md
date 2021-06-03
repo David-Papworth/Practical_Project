@@ -64,6 +64,8 @@ The first step was to create user stories to plan what was required, as well as 
 Database:
 I am using a Database linked to the front-end of the website so I can store previous cobinations and show the last 5. 
 
+![Image showing the database used](https://i.imgur.com/KnRbJpR.png?1)
+
 Nginx:
 Nginx is being used as a load balancer for this project. A load balancer is 
 
@@ -85,6 +87,8 @@ I used Trello for project tracking as it is free, light-wieght and easy to use. 
 
 ### Risk Assessment 
 
+
+## Testing 
 ```
 #!/bin/bash
 
@@ -142,8 +146,6 @@ class TestHome(TestBase):
             response = self.client.get(url_for('strat'))
             self.assertEqual({'Primary Only':0, 'Secondary Only':20, 'Snail Mode':40, 'Train':20, 'Rush':0}[response.json["strat"]],response.json["difficulty"])
 ```
-
-## Testing 
 
 ## Versions 
 
