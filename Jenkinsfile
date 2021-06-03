@@ -23,13 +23,13 @@ pipeline {
         stage('configuration'){
             steps{
                 sh "sudo apt install ansible -y"
-                sh "ansible.sh"
+                sh "bash ansible.sh"
                 sh "ansible-playbook -i ./ansible/inventory.yaml ./ansible/playbook.yaml"
             }
         }
         stage('deploy'){
             steps{
-                sh "deploy.sh"
+                sh "bash deploy.sh"
             }
         }
     }
