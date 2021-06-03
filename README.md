@@ -85,6 +85,64 @@ I used Trello for project tracking as it is free, light-wieght and easy to use. 
 
 ### Risk Assessment 
 
+```
+#!/bin/bash
+
+sudo apt update 
+sudo apt install python3 python3-pip
+
+pip3 install -r requirements.txt
+pip3 install requests-mock
+export DATABASE_URI
+export SECRET_KEY
+
+python3 -m pytest front-end --junitxml=junit/test-results.xml --cov=app --cov-report=xml --cov-report=html
+python3 -m pytest operator_random --junitxml=junit/test-results1.xml --cov=app --cov-report=xml --cov-report=html
+python3 -m pytest strat_random --junitxml=junit/test-results2.xml --cov=app --cov-report=xml --cov-report=html
+python3 -m pytest points --junitxml=junit/test-results3.xml --cov=app --cov-report=xml --cov-report=html
+```
+
+```
+class TestHome(TestBase):
+    def test_home(self):
+        with requests_mock.Mocker() as mocker:
+            mocker.get('http://project_random_operator:5000/operator', json={"operator":'Ash', "difficulty":0})
+            mocker.get('http://project_random_strat:5000/strat', json={"strat":'Train', "difficulty":20})
+            mocker.post('http://project_points:5000/points', text='35')
+            response = self.client.get(url_for('home'))
+            self.assertEqual(response.status_code, 200)
+            self.assertIn(b'Ash', response.data)
+            self.assertIn(b'Train', response.data)
+            self.assertIn(b'35', response.data)
+```
+
+```
+class TestOpp(TestBase):
+    def test_operator(self):
+        for _ in range(20):
+            response = self.client.get(url_for('operator'))
+            self.assertEqual({'Sledge':0, 'Thatcher':10, 'Ash':0, 'Thermite':10, 'Montagne':20, 'Twitch':10, 'Blitz':10, 'Fuze':20, 'Glaz':20}[response.json["operator"]],response.json["difficulty"])
+```
+
+```
+class TestHome(TestBase):
+    def test_points(self):
+        test_cases=[(0,0), (0,20), (0,40), (10,0), (10,20), (10,40), (20,0), (20,20), (20,40)]
+        for ops,stra in test_cases:
+            response = self.client.post(url_for('points'), json={"difficulty":ops, "difficulty_strat":stra})
+            lower = 0 + ops + stra
+            upper = 50 + ops + stra
+            self.assertIn(int(response.data),range(lower,upper))
+```
+
+```
+class TestHome(TestBase):
+    def test_strat(self):
+        for _ in range(20):
+            response = self.client.get(url_for('strat'))
+            self.assertEqual({'Primary Only':0, 'Secondary Only':20, 'Snail Mode':40, 'Train':20, 'Rush':0}[response.json["strat"]],response.json["difficulty"])
+```
+
 ## Testing 
 
 ## Versions 
@@ -96,3 +154,4 @@ I used Trello for project tracking as it is free, light-wieght and easy to use. 
 ## Future Improvements 
 
 ## Author 
+David Papworth
