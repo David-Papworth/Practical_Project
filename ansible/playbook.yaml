@@ -1,4 +1,6 @@
-- hosts: all
+- hosts: 
+  - managers
+  - workers
   become: true
   roles:       
   - install-docker
