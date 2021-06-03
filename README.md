@@ -62,7 +62,7 @@ The first step was to create user stories to plan what was required, as well as 
 * Deploy the site on the managers using xginx and a load balancer.
 
 Database:
-I am using a Database linked to the front-end of the website so I can store previous cobinations and show the last 5. 
+I am using a Database linked to the front-end of the website so I can store previous cobinations and show the last 5 sets of data made. 
 
 ![Image showing the database used](https://i.imgur.com/KnRbJpR.png?1)
 
@@ -70,7 +70,7 @@ Nginx:
 Nginx is being used as a load balancer for this project. A load balancer is 
 
 Ansible:
-Is being used to install packages onto the vm as well as set up the workers and managers 
+Is being used to install packages onto the vm as well as set up the workers and managers. 
 
 Docker:
 docker is used to containerise the 4 services. 
@@ -89,6 +89,8 @@ I used Trello for project tracking as it is free, light-wieght and easy to use. 
 
 
 ## Testing 
+All test was run using pytest and Jenkins. Code 1 was used to run the unit tests in Jenkins (found as test.sh).
+Code 1:
 ```
 #!/bin/bash
 
@@ -105,6 +107,8 @@ python3 -m pytest operator_random --junitxml=junit/test-results1.xml --cov=app -
 python3 -m pytest strat_random --junitxml=junit/test-results2.xml --cov=app --cov-report=xml --cov-report=html
 python3 -m pytest points --junitxml=junit/test-results3.xml --cov=app --cov-report=xml --cov-report=html
 ```
+This was carried out to make sure all the webpages and links worked correctly and if the services worked as intended. This was also used to run a coverage report. Coverage shows the number of lines the code reads though and ran to completion in pytest it doesn’t identify whether the code has given the intended output only that it had been run. We checked for the intended output by adding assertions to compare the output with a selected item (text, status code, etc).
+The code below shows the unit test for the front-end it checks if the webpage works correct status code 200 and mocks the inputs of the other services to check if the data is show on the page. 
 
 ```
 class TestHome(TestBase):
@@ -119,7 +123,7 @@ class TestHome(TestBase):
             self.assertIn(b'Train', response.data)
             self.assertIn(b'35', response.data)
 ```
-
+The code below shows the unit test for the random operator service and checks if the correct reponce is given. 
 ```
 class TestOpp(TestBase):
     def test_operator(self):
@@ -127,7 +131,7 @@ class TestOpp(TestBase):
             response = self.client.get(url_for('operator'))
             self.assertEqual({'Sledge':0, 'Thatcher':10, 'Ash':0, 'Thermite':10, 'Montagne':20, 'Twitch':10, 'Blitz':10, 'Fuze':20, 'Glaz':20}[response.json["operator"]],response.json["difficulty"])
 ```
-
+The code below shows the unit test for the random  service and checks if the correct reponce is given. 
 ```
 class TestHome(TestBase):
     def test_points(self):
