@@ -6,6 +6,6 @@
   docker_swarm_info:
   register: swarm_info
 - name: Add to docker group
-  add_host:
-    name: '{{ ip_from_ec2 }}'
+  user:
+    name: "{{ lookup('env', 'USER') }}"
     groups: docker
