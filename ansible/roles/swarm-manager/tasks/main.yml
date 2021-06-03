@@ -4,4 +4,4 @@
     state: present
 - name: Get info on Docker Swarm
   docker_swarm_info:
-  register: swarm_info
+    register: swarm_info
