@@ -3,11 +3,11 @@
 
 # nginx install
 - name: Install nginx
-    apt:
-      name: nginx
-      state: present
-      update_cache: true
-    register: nignx_time
+  apt:
+    name: nginx
+    state: present
+    update_cache: true
+  register: nignx_time
 
 - name: check install
   debug:
