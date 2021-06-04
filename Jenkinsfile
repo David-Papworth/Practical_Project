@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment{
         docker_hub_credentials = credentials('docker-hub-credentials')
+        DATABSE_URI = credentials('DATABASE_URI')
     }
     stages {
         stage('Test') {
