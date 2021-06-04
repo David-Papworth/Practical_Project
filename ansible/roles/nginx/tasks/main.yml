@@ -7,18 +7,13 @@
     name: nginx
     state: present
     update_cache: true
-  register: nignx_time
-
-- name: Start nginx
-  service:
-    name: nginx
-    state: started
 
 # template file into machine 
 - name: Template a file to /etc/file.conf
   template:
     src: nginx.conf
     dest: /etc/nginx.conf
+  register: nginx_config
 
 
 # reload nginx
