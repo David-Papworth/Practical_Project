@@ -12,7 +12,7 @@
 - name: Template a file to /etc/file.conf
   template:
     src: nginx.conf
-    dest: /etc/nginx.conf
+    dest: /etc/nginx/nginx.conf
   register: nginx_config
 
 
@@ -21,4 +21,4 @@
   service:
     name: nginx
     state: restarted
-  when: nginx_config.changed == true
+  when: nginx_config.changed 
