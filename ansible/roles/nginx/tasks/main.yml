@@ -9,10 +9,6 @@
     update_cache: true
   register: nignx_time
 
-- name: check install
-  debug:
-    msg: "{{ nignx_time }}"
-
 - name: Start nginx
   service:
     name: nginx
@@ -20,12 +16,10 @@
 
 # template file into machine 
 - name: Template a file to /etc/file.conf
-  ansible.builtin.template:
-    src: /templates/nginx.conf
+  template:
+    src: nginx.conf
     dest: /etc/nginx.conf
-    owner: bin
-    group: wheel
-    mode: '0644'
+
 
 # reload nginx
 - name: Restart nginx if needed
