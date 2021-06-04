@@ -12,4 +12,4 @@ class TestHome(TestBase):
     def test_strat(self):
         for _ in range(20):
             response = self.client.get(url_for('strat'))
-            self.assertEqual({'Primary Only':0, 'Secondary Only':20, 'Snail Mode':40, 'Train':20, 'Rush':0}[response.json["strat"]],response.json["difficulty"])
+            self.assertEqual({'Primary Only':0, 'Secondary Only':20, 'Snail Mode':40, 'Train':20, 'Rush':0, '1 minute plant':20, 'last minute rush':20, 'knife only':40}[response.json["strat"]],response.json["difficulty"])

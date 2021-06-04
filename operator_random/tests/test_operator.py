@@ -12,4 +12,4 @@ class TestOpp(TestBase):
     def test_operator(self):
         for _ in range(20):
             response = self.client.get(url_for('operator'))
-            self.assertEqual({'Sledge':0, 'Thatcher':10, 'Ash':0, 'Thermite':10, 'Montagne':20, 'Twitch':10, 'Blitz':10, 'Fuze':20, 'Glaz':20}[response.json["operator"]],response.json["difficulty"])
+            self.assertEqual({'Sledge':0, 'Thatcher':10, 'Ash':0, 'Thermite':10, 'Montagne':20, 'Twitch':10, 'Blitz':10, 'Fuze':20, 'Glaz':20, 'Buck':0, 'Blackbeard':0, 'Capitao':10, 'Hibana':10}[response.json["operator"]],response.json["difficulty"])
