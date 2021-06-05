@@ -9,16 +9,24 @@ services:
           target: 5000
         environment:
           DATABASE_URI: ${DATABASE_URI}
+        deploy:
+          replicas: 4
     random_operator:
         container_name: project_random_operator
         image: davidpapworth2/project_random_operator
         build: ./operator_random
+        deploy:
+            replicas: 4
     random_strat:
         container_name: project_random_strat
         image: davidpapworth2/project_random_strat
         build: ./strat_random
+        deploy:
+            replicas: 4
     points:
         container_name: project_points
         image: davidpapworth2/project_points
         build: ./points
+        deploy:
+            replicas: 4
         
