@@ -98,7 +98,18 @@ I used Trello for project tracking as it is free, light-wieght and easy to use. 
 ![image showing start of sprint 2](https://i.imgur.com/khwfKSZ.png?1)
 ![image showing end of sprint 2](https://i.imgur.com/3KxYdTe.png?1)
 
+Figure 1 shows the trello at the start of the project.
+Figure 2 shows the trello at the end of the first sprint where V1 of the program is complete.
+Figure 3 shows the trello at the start of the second sprint. 
+Figure 4 shows the trello at the end of the second sprint with V2 complete. 
 
+The key areas of the Trello:
+Project backlog: Shows the items not being worked on in the sprint during current sprint
+Sprint backlog: Shows the items being worked on this sprint which have not been completed
+Review: Items that have been completed but need to be tested to see if they are working to the set parameters
+Complete: Items that have been finished
+Also, Moscow was implemented on the project using tags (Green means must have, Orange Could have, Red won’t have).
+The other colours of tags show which sections are related (e.g. the user story with the task to complete that user story).
 ### Risk Assessment 
 The risk assessment below shows all the risks involved with this project.
 ![image showing risk assessment](https://i.imgur.com/q7YKYD2.png?1)
