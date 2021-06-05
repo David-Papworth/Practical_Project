@@ -163,7 +163,7 @@ The figures above shows that I have 100% coverage over the sevices.
 ## Versions 
 One of the key items in the project to have a rolling update to the website. This was done creating a version 1 then making changes to all the services and running the docker stack deploy using the version 2 images. 
 ### Version 1
-![webpage version 1](https://i.imgur.com/o5c8dlU.png?2)
+![webpage version 1](https://i.imgur.com/o5c8dlU.png?3)
 The services in version 1:
 * front end: shows infomation about operator, strat and points per kill plus the last 5 sets of data (show in the figure above)
 * random operator: gets operator (Sledge, Thatcher, Ash, Thermite, Montagne, Twitch, Blitz, Fuze, Glaz) and their difficulity.
