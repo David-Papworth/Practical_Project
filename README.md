@@ -69,7 +69,7 @@ I am using a Database linked to the front-end of the website so I can store prev
 ![Image showing the database used](https://i.imgur.com/KnRbJpR.png?1)
 
 Nginx:
-Nginx is being used as a load balancer for this project. A load balancer is 
+Nginx is being used as a load balancer for this project. A load balancer is a system which decides where traffic show going depending on a set of parameters. This is normally done to reduces stress on a individul service and evenly distripute the load between the connected services.
 
 Ansible:
 Is being used to install packages onto the vm as well as set up the workers and managers. 
@@ -79,6 +79,10 @@ docker is used to containerise the 4 services.
 docker-compose is being used to create the images (docker-compose build) and push them (docker-compose push) to a reposortory (DockerHub).
 docker swarm is utilised to manage and create a set of nodes (workers and manager).
 docker stack is used to run the site.
+![Image showing service setup](https://i.imgur.com/JzEF2TH.png?1)
+Th figure above shows the interaction between the services as well as the interaction with a database. As see in the figure get requests are sent to the operator random and strat random services and data is recieved. This data is then sent to the points service with a post request recieving the points per kill value these items are then stored in the database and shown on the front end so the user can see it.  
+![Image showing swarm setup](https://i.imgur.com/pUfDcvw.png?1)
+The figure above shows the set up for the docker swarm as well as engine x. This shows the user interacting with nginx which part of the swarm to send the request to. Requests are then sent between the nodes in the swarm to recieve the necessary data from the services. 
 
 ### CI Pipeline 
 The figure above shows the CI pipeline used for this project. Continuous Integration allows me to automate testing as well as deployment of the website. This increases the speed and precision of the project. In my method, when the code is pushed to Github, Jenkins will fetch and build the repository, it will then run unit tests as well as integration tests. This will then send a report to the developer informing them of the result.
