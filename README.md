@@ -87,7 +87,8 @@ Th figure above shows the interaction between the services as well as the intera
 The figure above shows the set up for the docker swarm as well as engine x. This shows the user interacting with nginx which part of the swarm to send the request to. Requests are then sent between the nodes in the swarm to recieve the necessary data from the services. 
 
 ### CI Pipeline 
-The figure above shows the CI pipeline used for this project. Continuous Integration allows me to automate testing as well as deployment of the website. This increases the speed and precision of the project. In my method, when the code is pushed to Github, Jenkins will fetch and build the repository, it will then run unit tests as well as integration tests. This will then send a report to the developer informing them of the result.
+![Image showing CI pipeline](https://i.imgur.com/GgBqpfT.png?1)
+The figure above shows the CI pipeline used for this project. Continuous Integration allows me to automate testing as well as deployment of the website. This increases the speed and precision of the project. In my method, when the code is pushed to Github, Jenkins will fetch and build the repository, it will then run unit tests. This will then send a report to the developer informing them of the result. If all the tests pass then the docker images will be pushed to docker hub. When the push is finished ansible is run to install packages and set up the swarm and nginx. Once this is done a docker stack compand is run which makes the website publicaly accessable. 
 
 ### Project Tracking 
 I used Trello for project tracking as it is free, light-wieght and easy to use. Below are a few images showing different stages of the sprint. The Trello board can be also found here: https://trello.com/b/TCif27rc
@@ -96,7 +97,7 @@ I used Trello for project tracking as it is free, light-wieght and easy to use. 
 
 ### Risk Assessment 
 The risk assessment below shows all the risks involved with this project.
-
+![image showing risk assessment](https://i.imgur.com/q7YKYD2.png?1)
 All item highlighted in grey were risks added during the project sprint.
 
 ## Testing 
