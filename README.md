@@ -161,10 +161,21 @@ class TestHome(TestBase):
 ![points coverage report](https://i.imgur.com/so72elB.png?1)
 The figures above shows that I have 100% coverage over the sevices.
 ## Versions 
-One of the key items in the project to have a rolling update to the website. 
+One of the key items in the project to have a rolling update to the website. This was done creating a version 1 then making changes to all the services and running the docker stack deploy using the version 2 images. 
 ### Version 1
-
+![webpage version 1](https://i.imgur.com/o5c8dlU.png?2)
+The services in version 1:
+* front end: shows infomation about operator, strat and points per kill plus the last 5 sets of data (show in the figure above)
+* random operator: gets operator (Sledge, Thatcher, Ash, Thermite, Montagne, Twitch, Blitz, Fuze, Glaz) and their difficulity.
+* random strat: gets strat (Primary Only, Secondary Only, Snail Mode, Train, Rush) and their difficulity.
+* points per kill: uses the difficulity from the random services and gives a points per kill value.
 ### Version 2
+
+Changes in service 2 from service 1:
+* front end: changes to view of the page show in figure above.
+* random operator: added extra operators. 
+* random strat: added extra strats.
+* points per kill: changes the points values to be multiples of 5. 
 
 ## Future Improvements 
 ### Code
