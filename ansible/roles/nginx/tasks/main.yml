@@ -1,0 +1,24 @@
+---
+# tasks file for nginx
+
+# nginx install
+- name: Install nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: true
+
+# template file into machine 
+- name: Template a file to /etc/file.conf
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+  register: nginx_config
+
+
+# reload nginx
+- name: Restart nginx if needed
+  service:
+    name: nginx
+    state: restarted
+  when: nginx_config.changed 

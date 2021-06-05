@@ -1,0 +1,11 @@
+---
+- name: 'Init a new swarm with default parameters'
+  docker_swarm:
+    state: present
+- name: 'Get info on Docker Swarm'
+  docker_swarm_info:
+  register: swarm_info
+- name: Add to docker group
+  user:
+    name: "{{ lookup('env', 'USER') }}"
+    groups: docker
