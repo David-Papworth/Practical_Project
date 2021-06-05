@@ -88,11 +88,15 @@ The figure above shows the set up for the docker swarm as well as engine x. This
 
 ### CI Pipeline 
 ![Image showing CI pipeline](https://i.imgur.com/GgBqpfT.png?1)
+
 The figure above shows the CI pipeline used for this project. Continuous Integration allows me to automate testing as well as deployment of the website. This increases the speed and precision of the project. In my method, when the code is pushed to Github, Jenkins will fetch and build the repository, it will then run unit tests. This will then send a report to the developer informing them of the result. If all the tests pass then the docker images will be pushed to docker hub. When the push is finished ansible is run to install packages and set up the swarm and nginx. Once this is done a docker stack compand is run which makes the website publicaly accessable. 
 
 ### Project Tracking 
 I used Trello for project tracking as it is free, light-wieght and easy to use. Below are a few images showing different stages of the sprint. The Trello board can be also found here: https://trello.com/b/TCif27rc
-![project tracking start](https://i.imgur.com/nNyukRs.png?1)
+![image showing project tracking start](https://i.imgur.com/nNyukRs.png?1)
+![image showing end of sprint 1](https://i.imgur.com/iuq0wIv.png?2)
+![image showing start of sprint 2](https://i.imgur.com/khwfKSZ.png?1)
+![image showing end of sprint 2](https://i.imgur.com/3KxYdTe.png?1)
 
 
 ### Risk Assessment 
@@ -119,7 +123,7 @@ python3 -m pytest operator_random --junitxml=junit/test-results1.xml --cov=app -
 python3 -m pytest strat_random --junitxml=junit/test-results2.xml --cov=app --cov-report=xml --cov-report=html
 python3 -m pytest points --junitxml=junit/test-results3.xml --cov=app --cov-report=xml --cov-report=html
 ```
-This was carried out to make sure all the webpages  and if the services worked as intended. This was also used to run a coverage report. Coverage shows the number of lines the code reads though and ran to completion in pytest it doesn’t identify whether the code has given the intended output only that it had been run. We checked for the intended output by adding assertions to compare the output with a selected item (text, status code, etc).
+This was carried out to make sure all the webpages and if the services worked as intended. This was also used to run a coverage report. Coverage shows the number of lines the code reads though and ran to completion in pytest it doesn’t identify whether the code has given the intended output only that it had been run. We checked for the intended output by adding assertions to compare the output with a selected item (text, status code, etc).
 The code below shows the unit test for the front-end it checks if the webpage works correct status code 200 and mocks the inputs of the other services to check if the data is show on the page. 
 
 ```
@@ -167,7 +171,11 @@ class TestHome(TestBase):
 ![random-operator coverage report](https://i.imgur.com/4zQkPgc.png?1)
 ![random-strat coverage report](https://i.imgur.com/18h8TJn.png?1)
 ![points coverage report](https://i.imgur.com/so72elB.png?1)
+
 The figures above shows that I have 100% coverage over the sevices.
+![image showing a completed run in jenkins](https://i.imgur.com/45evNm2.png?1)
+
+The figure above shows a completed run in jenkins. 
 ## Versions 
 One of the key items in the project to have a rolling update to the website. This was done creating a version 1 then making changes to all the services and running the docker stack deploy using the version 2 images. 
 ### Version 1
@@ -178,7 +186,7 @@ The services in version 1:
 * random strat: gets strat (Primary Only, Secondary Only, Snail Mode, Train, Rush) and their difficulity.
 * points per kill: uses the difficulity from the random services and gives a points per kill value.
 ### Version 2
-
+![webpage version 2](https://i.imgur.com/IFT6t0v.png?1)
 Changes in service 2 from service 1:
 * front end: changes to view of the page show in figure above.
 * random operator: added extra operators. 
@@ -187,10 +195,10 @@ Changes in service 2 from service 1:
 
 ## Future Improvements 
 ### Code
-A button could be implemented to refresh the page to get a new set of data rather then doing manually. 
-Add all the attack operators into the random operator picks.
-Adding a defence option so you can get a defender as well as attacker or one of them if you had a option button.
-Clean up code such as only having needed items in the requirements.txt. 
+* A button could be implemented to refresh the page to get a new set of data rather then doing manually. 
+* Add all the attack operators into the random operator picks.
+* Adding a defence option so you can get a defender as well as attacker or one of them if you had a option button.
+* Clean up code such as only having needed items in the requirements.txt. 
 ### Testing 
 Integration tests coukd be used to test the pathway a user would use as well as stress test the system(e.g check if x button is pressed (x times) will the website break, how many user would it take to crash the site and if a button is pressed multiple times (quickly) will it give the correct response each time.)
 ## Author 
