@@ -14,6 +14,8 @@
     * [Version 1](#Version-1)
     * [Version 2](#Version-2)
 * [Future Improvements](#Future-Improvements)
+    * [Code](#Code)
+    * [Testing ](#Testing)
 * [Author](#Author)
 
 ## Intoduction
@@ -79,14 +81,16 @@ docker swarm is utilised to manage and create a set of nodes (workers and manage
 docker stack is used to run the site.
 
 ### CI Pipeline 
-
 The figure above shows the CI pipeline used for this project. Continuous Integration allows me to automate testing as well as deployment of the website. This increases the speed and precision of the project. In my method, when the code is pushed to Github, Jenkins will fetch and build the repository, it will then run unit tests as well as integration tests. This will then send a report to the developer informing them of the result.
 
 ### Project Tracking 
 I used Trello for project tracking as it is free, light-wieght and easy to use. Below are a few images showing different stages of the sprint. The Trello board can be also found here:
+![project tracking start](https://i.imgur.com/nNyukRs.png?1)
 
 ### Risk Assessment 
+The risk assessment below shows all the risks involved with this project.
 
+All item highlighted in grey were risks added during the project sprint.
 
 ## Testing 
 All test was run using pytest and Jenkins. Code 1 was used to run the unit tests in Jenkins (found as test.sh).
@@ -107,7 +111,7 @@ python3 -m pytest operator_random --junitxml=junit/test-results1.xml --cov=app -
 python3 -m pytest strat_random --junitxml=junit/test-results2.xml --cov=app --cov-report=xml --cov-report=html
 python3 -m pytest points --junitxml=junit/test-results3.xml --cov=app --cov-report=xml --cov-report=html
 ```
-This was carried out to make sure all the webpages and links worked correctly and if the services worked as intended. This was also used to run a coverage report. Coverage shows the number of lines the code reads though and ran to completion in pytest it doesn’t identify whether the code has given the intended output only that it had been run. We checked for the intended output by adding assertions to compare the output with a selected item (text, status code, etc).
+This was carried out to make sure all the webpages  and if the services worked as intended. This was also used to run a coverage report. Coverage shows the number of lines the code reads though and ran to completion in pytest it doesn’t identify whether the code has given the intended output only that it had been run. We checked for the intended output by adding assertions to compare the output with a selected item (text, status code, etc).
 The code below shows the unit test for the front-end it checks if the webpage works correct status code 200 and mocks the inputs of the other services to check if the data is show on the page. 
 
 ```
@@ -131,7 +135,15 @@ class TestOpp(TestBase):
             response = self.client.get(url_for('operator'))
             self.assertEqual({'Sledge':0, 'Thatcher':10, 'Ash':0, 'Thermite':10, 'Montagne':20, 'Twitch':10, 'Blitz':10, 'Fuze':20, 'Glaz':20}[response.json["operator"]],response.json["difficulty"])
 ```
-The code below shows the unit test for the random  service and checks if the correct reponce is given. 
+The code below shows the unit test for the random strat service and checks if the correct reponce is given. 
+```
+class TestHome(TestBase):
+    def test_strat(self):
+        for _ in range(20):
+            response = self.client.get(url_for('strat'))
+            self.assertEqual({'Primary Only':0, 'Secondary Only':20, 'Snail Mode':40, 'Train':20, 'Rush':0}[response.json["strat"]],response.json["difficulty"])
+```
+The code below shows the unit test for points service where it checks for all inputs that the correct output is given.  
 ```
 class TestHome(TestBase):
     def test_points(self):
@@ -142,22 +154,25 @@ class TestHome(TestBase):
             upper = 50 + ops + stra
             self.assertIn(int(response.data),range(lower,upper))
 ```
-
-```
-class TestHome(TestBase):
-    def test_strat(self):
-        for _ in range(20):
-            response = self.client.get(url_for('strat'))
-            self.assertEqual({'Primary Only':0, 'Secondary Only':20, 'Snail Mode':40, 'Train':20, 'Rush':0}[response.json["strat"]],response.json["difficulty"])
-```
-
+![coverage report](https://i.imgur.com/QII6RWN.png?1)
+![front-end coverage report](https://i.imgur.com/RlyFAdF.png?1)
+![random-operator coverage report](https://i.imgur.com/4zQkPgc.png?1)
+![random-strat coverage report](https://i.imgur.com/18h8TJn.png?1)
+![points coverage report](https://i.imgur.com/so72elB.png?1)
+The figures above shows that I have 100% coverage over the sevices.
 ## Versions 
-
+One of the key items in the project to have a rolling update to the website. 
 ### Version 1
 
 ### Version 2
 
 ## Future Improvements 
-
+### Code
+A button could be implemented to refresh the page to get a new set of data rather then doing manually. 
+Add all the attack operators into the random operator picks.
+Adding a defence option so you can get a defender as well as attacker or one of them if you had a option button.
+Clean up code such as only having needed items in the requirements.txt. 
+### Testing 
+Integration tests coukd be used to test the pathway a user would use as well as stress test the system(e.g check if x button is pressed (x times) will the website break, how many user would it take to crash the site and if a button is pressed multiple times (quickly) will it give the correct response each time.)
 ## Author 
 David Papworth
