@@ -80,16 +80,19 @@ docker-compose is being used to create the images (docker-compose build) and pus
 docker swarm is utilised to manage and create a set of nodes (workers and manager).
 docker stack is used to run the site.
 ![Image showing service setup](https://i.imgur.com/JzEF2TH.png?1)
+
 Th figure above shows the interaction between the services as well as the interaction with a database. As see in the figure get requests are sent to the operator random and strat random services and data is recieved. This data is then sent to the points service with a post request recieving the points per kill value these items are then stored in the database and shown on the front end so the user can see it.  
 ![Image showing swarm setup](https://i.imgur.com/pUfDcvw.png?1)
+
 The figure above shows the set up for the docker swarm as well as engine x. This shows the user interacting with nginx which part of the swarm to send the request to. Requests are then sent between the nodes in the swarm to recieve the necessary data from the services. 
 
 ### CI Pipeline 
 The figure above shows the CI pipeline used for this project. Continuous Integration allows me to automate testing as well as deployment of the website. This increases the speed and precision of the project. In my method, when the code is pushed to Github, Jenkins will fetch and build the repository, it will then run unit tests as well as integration tests. This will then send a report to the developer informing them of the result.
 
 ### Project Tracking 
-I used Trello for project tracking as it is free, light-wieght and easy to use. Below are a few images showing different stages of the sprint. The Trello board can be also found here:
+I used Trello for project tracking as it is free, light-wieght and easy to use. Below are a few images showing different stages of the sprint. The Trello board can be also found here: https://trello.com/b/TCif27rc
 ![project tracking start](https://i.imgur.com/nNyukRs.png?1)
+
 
 ### Risk Assessment 
 The risk assessment below shows all the risks involved with this project.
