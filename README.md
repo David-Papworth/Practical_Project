@@ -215,10 +215,13 @@ Changes in version 2 from version 1:
 
 ## Future Improvements 
 ### Code
-* A button could be implemented to refresh the page to get a new set of data rather then doing this manually. 
-* Add all the attack operators into the random operator picks.
-* Add a defence option so you can get a defender as well as attacker or one of them if you had a option button.
-* Clean up code such as only having needed items in the requirements.txt. 
+A button could be implemented to refresh the page to get a new set of data rather then doing this manually. 
+
+Add all the attack operators into the random operator picks.
+
+Add a defence option so you can get a defender as well as attacker or one of them if you had a option button.
+
+Clean up code such as only having needed items in the requirements.txt. 
 ### Testing 
 Integration tests could be used to test the pathway a user would take as well as stress test the system(e.g check if x button is pressed (x times) will the website break, how many user would it take to crash the site and if a button is pressed multiple times (quickly) will it give the correct response each time.)
 ## Author 
