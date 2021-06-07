@@ -29,4 +29,5 @@ services:
         build: ./points
         deploy:
           replicas: 4
+
         

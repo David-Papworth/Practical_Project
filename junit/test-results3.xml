@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="0.290" timestamp="2021-06-01T16:41:37.481859" hostname="docker-1"><testcase classname="points.tests.test_points.TestHome" name="test_points" time="0.015" /></testsuite></testsuites>

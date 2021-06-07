@@ -5,11 +5,11 @@ app = Flask(__name__)
 
 @app.route('/operator')
 def operator():
-    operator_list = ['Sledge', 'Thatcher', 'Ash', 'Thermite', 'Montagne', 'Twitch', 'Blitz', 'Fuze', 'Glaz']
+    operator_list = ['Sledge', 'Thatcher', 'Ash', 'Thermite', 'Montagne', 'Twitch', 'Blitz', 'Fuze', 'Glaz', 'Buck', 'Blackbeard', 'Capitao', 'Hibana']
     op = random.choice(operator_list)
-    if op in ['Ash', 'Sledge']:
+    if op in ['Ash', 'Sledge', 'Buck', 'Blackbeard']:
         dif = 0
-    elif op in ['Thatcher', 'Thermite', 'Twitch', 'Blitz']:
+    elif op in ['Thatcher', 'Thermite', 'Twitch', 'Blitz', 'Capitao', 'Hibana']:
         dif = 10 
     elif op in ['Montagne', 'Fuze', 'Glaz']:
         dif = 20 
