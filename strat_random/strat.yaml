@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: strat
+  labels: 
+    app: strat
+spec:
+  selector:
+    matchLabels:
+      app: strat
+  template:
+    metadata:
+      labels:
+        app: strat
+    spec:
+      containers:
+      - name: strat
+        image: davidpapworth2/project_random_strat:latest
+        ports:
+        - containerPort: 5000 

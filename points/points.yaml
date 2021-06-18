@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: points
+  labels: 
+    app: points
+spec:
+  selector:
+    matchLabels:
+      app: points
+  template:
+    metadata:
+      labels:
+        app: points
+    spec:
+      containers:
+      - name: points
+        image: davidpapworth2/project_points:latest
+        ports:
+        - containerPort: 5000 
