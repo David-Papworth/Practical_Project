@@ -39,4 +39,7 @@ spec:
         - containerPort: 5000
         env:
         - name: DATABASE_URI
-          value: 
+          valueFrom:
+            secretKeyRef:
+              name: database-uri
+              key: databaseURI
