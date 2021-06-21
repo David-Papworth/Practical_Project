@@ -1,20 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: project-points
+spec:
+  selector:
+    app: project-points
+  ports: 
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
+  type: ClusterIP
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: points
+  name: project-points
   labels: 
-    app: points
+    app: project-points
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: points
+      app: project-points
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
   template:
     metadata:
       labels:
-        app: points
+        app: project-points
     spec:
       containers:
-      - name: points
+      - name: project-points
         image: davidpapworth2/project_points:latest
         ports:
         - containerPort: 5000 

@@ -20,11 +20,11 @@ class Pick(db.Model):
 @app.route('/')
 @app.route('/home')
 def home():
-    op = requests.get('http://project_random_operator:5000/operator')
-    st = requests.get('http://project_random_strat:5000/strat')
+    op = requests.get('http://project-random-operator:5000/operator')
+    st = requests.get('http://project-random-strat:5000/strat')
     ops = op.json()["difficulty"]
     stra = st.json()["difficulty"]
-    points = requests.post('http://project_points:5000/points', json={"difficulty":ops, "difficulty_strat":stra})
+    points = requests.post('http://project-points:5000/points', json={"difficulty":ops, "difficulty_strat":stra})
     last_picks = Pick.query.order_by(desc("id")).limit(5).all()
     db.session.add(
         Pick(

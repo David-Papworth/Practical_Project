@@ -1,20 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: project-random-operator
+spec:
+  selector:
+    app: project-random-operator
+  ports: 
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
+  type: ClusterIP
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: operator
+  name: project-random-operator
   labels: 
-    app: operator
+    app: project-random-operator
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: operator
+      app: project-random-operator
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
   template:
     metadata:
       labels:
-        app: operator
+        app: project-random-operator
     spec:
       containers:
-      - name: operator
+      - name: project-random-operator
         image: davidpapworth2/project_random_operator:latest
         ports:
         - containerPort: 5000 

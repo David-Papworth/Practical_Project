@@ -1,20 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: project-random-strat
+spec:
+  selector:
+    app: project-random-strat
+  ports: 
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
+  type: ClusterIP
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: strat
+  name: project-random-strat
   labels: 
-    app: strat
+    app: project-random-strat
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: strat
+      app: project-random-strat
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
   template:
     metadata:
       labels:
-        app: strat
+        app: project-random-strat
     spec:
       containers:
-      - name: strat
+      - name: project-random-strat
         image: davidpapworth2/project_random_strat:latest
         ports:
         - containerPort: 5000 
